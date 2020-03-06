@@ -1,3 +1,4 @@
+use plotters;
 use plotters::prelude::*;
 
 use rand::SeedableRng;
@@ -8,10 +9,20 @@ use itertools::Itertools;
 
 use num_traits::sign::Signed;
 
+#[allow(dead_code)]
+pub struct Plot<'a, 'b, T, B> where 
+    T: plotters::drawing::backend::DrawingBackend,
+    B: plotters::coord::CoordTranslate {
+
+    root: DrawingArea<T,B>,
+    data: Vec<(f64,f64)>,
+    chart: ChartBuilder<'a, 'b, T>,
+}
+
 pub fn scatter(data: Vec<(f64,f64)>) -> Result<(), Box<dyn std::error::Error>> {
 
     let root = BitMapBackend::new("kym.png", (1024, 768)).into_drawing_area();
-    root.fill(&WHITE);
+    root.fill(&WHITE)?;
 
     let mut chart = ChartBuilder::on(&root)
         .caption("my_plot", ("sans-serif", 60))
