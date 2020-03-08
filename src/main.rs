@@ -1,4 +1,5 @@
 mod lib;
+use lib::plot;
 use lib::scatter;
 
 use plotters::prelude::*;
@@ -13,7 +14,7 @@ use num_traits::sign::Signed;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-    let data = vec![(1.0, 1.0), (2.0, 2.0), (3.0, 3.0)];
+    let data = vec![(1.0, 1.0), (2.0, 2.0), (3.0, 3.0), (4.0, 8.0), (5.0, 3.0)];
 
     // let root = BitMapBackend::new("kym.png", (1024, 768)).into_drawing_area();
     // root.fill(&WHITE);
@@ -35,7 +36,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     //      .background_style(WHITE.filled())
     //      .draw()?;
 
-    scatter(data);
+    plot(&data);
+    scatter(&data);
 
     // let data = generate_random_data();
     // let down_sampled = down_sample(&data[..]);
