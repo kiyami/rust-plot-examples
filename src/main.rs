@@ -1,5 +1,6 @@
 mod lib;
 use lib::scatter;
+use lib::plot;
 
 use plotters::prelude::*;
 
@@ -35,8 +36,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     //      .background_style(WHITE.filled())
     //      .draw()?;
 
-    scatter(data);
-
+    scatter(&data);
+    plot(&data);
+    
     // let data = generate_random_data();
     // let down_sampled = down_sample(&data[..]);
 
