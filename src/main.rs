@@ -5,7 +5,7 @@ use lib::scatter_error;
 use lib::scatter_error2;
 use lib::scatter_error3;
 
-use lib::plot;
+use lib::draw_function;
 
 use plotters::prelude::*;
 
@@ -19,14 +19,10 @@ use num_traits::sign::Signed;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
-<<<<<<< HEAD
-    let data = vec![(1.0, 1.0), (2.0, 2.0), (3.0, 3.0), (4.0, 8.0), (5.0, 3.0)];
-=======
     let data = vec![(1.0, 1.0), (2.0, 2.0), (3.0, 3.0)];
     let data_err = vec![(1.0, 0.8, 1.0, 1.2), (2.0, 1.8, 2.0, 2.2), (3.0, 2.8, 3.0, 3.2)];
     let data_err2 = vec![(1.0, 1.0, 0.3), (2.0, 2.0, 0.6), (3.0, 3.0, 0.9)];
     let data_err3 = vec![(1.0, 0.1, 1.0, 0.1), (2.0, 0.2, 2.0, 0.2), (3.0, 0.3, 3.0, 0.3)];
->>>>>>> d0d2c8bb2229ff23c4d340b1eadd68a81420d20e
 
     // let root = BitMapBackend::new("kym.png", (1024, 768)).into_drawing_area();
     // root.fill(&WHITE);
@@ -48,17 +44,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     //      .background_style(WHITE.filled())
     //      .draw()?;
 
-<<<<<<< HEAD
-    plot(&data);
-    scatter(&data);
-=======
     scatter(&data);
     plot(&data);
 
     scatter_error(&data_err);
     scatter_error2(&data_err2);
     scatter_error3(&data_err3);
->>>>>>> d0d2c8bb2229ff23c4d340b1eadd68a81420d20e
+
+    fn square(x: f64) -> f64 {
+        x*x
+    }
+
+    draw_function(&square, (-1.5,3.2), (0.0,12.0));
 
     // let data = generate_random_data();
     // let down_sampled = down_sample(&data[..]);
